@@ -1,6 +1,4 @@
-const HomePageHeader = () => {
-  return <header>Home Page Header</header>;
-};
+import HomePageHeader from "./HomePageHeader";
 
 const HomePageMain = () => {
   return <main>Home Page Main</main>;
