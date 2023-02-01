@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   VStack,
   HStack,
@@ -12,13 +11,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-import axios from "axios";
-import apiConfig from "../../../config/apiConfig";
-import keys from "../../../secrets/keys";
 import homePageCommonStyle from "../homePageCommonStyle";
-
-const { AIRTABLE_API_KEY = "" } = keys || {};
-const { airtable: { API_DOMAIN = "", APP_ID = "" } = {} } = apiConfig || {};
 
 const ProductCard = ({
   title = "",
@@ -59,35 +52,7 @@ const ProductCard = ({
   );
 };
 
-const CategoryProductCardList = ({
-  category: CATEGORY_TABLE_ID = "",
-  limit = -1,
-}) => {
-  const [dataProducts, setDataProducts] = useState([]);
-  useEffect(() => {
-    const API_URL = `${API_DOMAIN}/${APP_ID}/${CATEGORY_TABLE_ID}`;
-    const API_AUTHORIZATION = `Bearer ${AIRTABLE_API_KEY}`;
-
-    axios
-      .get(API_URL, {
-        headers: {
-          Authorization: API_AUTHORIZATION,
-        },
-      })
-      .then((res = {}) => {
-        const { status: statusCode = 0, data: { records = [] } = {} } = res;
-        if (statusCode !== 200 || !records.length) {
-          return;
-        }
-        console.log(records);
-        const dataProducts = records.map(({ fields = {}, id = "" }) => ({
-          fields,
-          id,
-        }));
-        setDataProducts(dataProducts);
-      });
-  }, []);
-
+const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
   const ProductCardList =
     dataProducts.length &&
     dataProducts.slice(0, limit).map((dataProduct = {}) => {

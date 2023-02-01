@@ -4,6 +4,7 @@ const apiConfig = {
     APP_ID: "apphTtq6eBmYWsZDj",
     productCategories: {
       MALE_CLOTHES: "tblLNlNUv2MsI4J8E",
+      FEMALE_CLOTHES: "tblF5l4oVEnjryUOv",
     },
   },
 };
