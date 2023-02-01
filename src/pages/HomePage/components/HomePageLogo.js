@@ -7,8 +7,6 @@ const HomePageLogo = ({ size: propSize = 1, link = true } = {}) => {
   const w = `${100 * size}px`;
   const h = `${60 * size}px`;
 
-  console.log(link);
-
   if (link) {
     return (
       <Link href="/">
