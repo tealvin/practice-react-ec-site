@@ -44,12 +44,13 @@ const IconLinkList = () => {
 };
 
 const HomePageHeader = () => {
-  const { homePagePx = "" } = homePageCommonStyle || {};
+  const { homePagePx = "", firmMainColor = "#E74E36" } =
+    homePageCommonStyle || {};
 
   return (
     <header>
       <Flex
-        bg="#E74E36"
+        bg={firmMainColor}
         px={homePagePx}
         justifyContent="space-between"
         alignItems="center"
