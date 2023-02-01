@@ -1,11 +1,8 @@
 import HomePageHeader from "./HomePageHeader";
+import HomePageFooter from "./HomePageFooter";
 
 const HomePageMain = () => {
   return <main>Home Page Main</main>;
-};
-
-const HomePageFooter = () => {
-  return <footer>Home Page Footer</footer>;
 };
 
 const HomePage = () => {
