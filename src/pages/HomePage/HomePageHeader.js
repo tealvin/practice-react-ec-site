@@ -1,5 +1,6 @@
-import { Image, Flex, Link, HStack } from "@chakra-ui/react";
+import { Flex, Link, HStack } from "@chakra-ui/react";
 import homePageCommonStyle from "./homePageCommonStyle";
+import HomePageLogo from "./components/HomePageLogo";
 
 const IconLink = ({
   backgroundSize = "",
@@ -42,20 +43,6 @@ const IconLinkList = () => {
   );
 };
 
-const Logo = () => {
-  return (
-    <Link href="/">
-      <Image
-        w="100px"
-        h="60px"
-        objectFit="cover"
-        src="https://i.imgur.com/Z6uX9dH.png"
-        alt="皮皮購物"
-      />
-    </Link>
-  );
-};
-
 const HomePageHeader = () => {
   const { homePagePx = "" } = homePageCommonStyle || {};
 
@@ -68,7 +55,7 @@ const HomePageHeader = () => {
         alignItems="center"
         h="60px"
       >
-        <Logo />
+        <HomePageLogo />
         <IconLinkList />
       </Flex>
     </header>
