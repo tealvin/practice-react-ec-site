@@ -1,17 +1,16 @@
-import HomePageHeader from "./HomePageHeader";
-import HomePageFooter from "./HomePageFooter";
+import { Box } from "@chakra-ui/react";
 
-const HomePageMain = () => {
-  return <main>Home Page Main</main>;
-};
+import HomePageHeader from "./HomePageHeader";
+import HomePageMain from "./HomePageMain";
+import HomePageFooter from "./HomePageFooter";
 
 const HomePage = () => {
   return (
-    <div>
+    <Box>
       <HomePageHeader />
       <HomePageMain />
       <HomePageFooter />
-    </div>
+    </Box>
   );
 };
 
