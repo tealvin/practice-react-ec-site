@@ -60,6 +60,8 @@ const CategoryProductSection = ({ category = "" } = {}) => {
   const categoryLang = categoryLangMapping[category] || " ";
   const categoryLangSection = categoryLang && <Text>{categoryLang}</Text>;
 
+  if (!dataProducts.length) return;
+
   return (
     <Card>
       <CardHeader>
