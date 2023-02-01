@@ -1,4 +1,5 @@
 import { Image, Flex, Link, HStack } from "@chakra-ui/react";
+import homePageCommonStyle from "./homePageCommonStyle";
 
 const IconLink = ({
   backgroundSize = "",
@@ -56,11 +57,13 @@ const Logo = () => {
 };
 
 const HomePageHeader = () => {
+  const { homePagePx = "" } = homePageCommonStyle || {};
+
   return (
     <header>
       <Flex
         bg="#E74E36"
-        px="50px"
+        px={homePagePx}
         justifyContent="space-between"
         alignItems="center"
         h="60px"
