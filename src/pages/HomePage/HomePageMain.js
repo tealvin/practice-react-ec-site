@@ -82,7 +82,7 @@ const HomePageMain = () => {
     <main>
       <VStack py="10" spacing="10">
         <CategoryProductSection category={"MALE_CLOTHES"} />
-        <CategoryProductSection category={"FEMALE_CLOTHES"} />
+        {/* <CategoryProductSection category={"FEMALE_CLOTHES"} /> */}
       </VStack>
     </main>
   );

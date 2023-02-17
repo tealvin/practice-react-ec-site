@@ -14,38 +14,46 @@ import {
 import homePageCommonStyle from "../homePageCommonStyle";
 
 const ProductCard = ({
-  title = "",
+  name = "",
   inStock = 0,
-  price = 0,
+  priceRange = "",
   imgUrl = "",
 } = {}) => {
-  if (!title || !inStock || !price || !imgUrl) return;
+  if (!name || !inStock || !priceRange || !imgUrl) return;
 
   const { firmMainColor = "#E74E36" } = homePageCommonStyle || {};
-  const truncatedTitle = title && title.slice(0, 10) + "..";
+  const titleCharLimit = 15;
+  const truncatedTitle = name && name.slice(0, titleCharLimit) + "..";
+
+  const cardContentSize = 180;
 
   const CardFooterHeading = (
-    <Heading size="xs" w={150}>
+    <Heading size="xs" w={cardContentSize}>
       {truncatedTitle}
     </Heading>
   );
-  const CardFooterContent = (
-    <Flex w={150} justifyContent="space-between">
+  const CardFooterBlock = (
+    <Flex w={cardContentSize} justifyContent="space-between">
       <Text color="#808080">{`剩下${inStock}個`}</Text>
-      <Text color={firmMainColor}>{`$ ${price}`}</Text>
+      <Text color={firmMainColor}>{priceRange}</Text>
     </Flex>
   );
 
   return (
     <Card>
       <CardBody>
-        <Image w={150} h={150} src={imgUrl} alt={title} />
+        <Image
+          w={cardContentSize}
+          h={cardContentSize}
+          src={imgUrl}
+          alt={name}
+        />
       </CardBody>
       <Divider spacing="4"></Divider>
       <CardFooter>
         <VStack>
           {CardFooterHeading}
-          {CardFooterContent}
+          {CardFooterBlock}
         </VStack>
       </CardFooter>
     </Card>
@@ -58,9 +66,9 @@ const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
     dataProducts.slice(0, limit).map((dataProduct = {}) => {
       const {
         fields: {
-          price = 0,
+          price_range: priceRange = "",
           in_stock: inStock = 0,
-          title = "",
+          name = "",
           img_url: imgUrl = "",
         } = {},
         id: dataProductId = "",
@@ -69,9 +77,9 @@ const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
       return (
         <ProductCard
           key={dataProductId}
-          title={title}
+          name={name}
           inStock={inStock}
-          price={price}
+          priceRange={priceRange}
           imgUrl={imgUrl}
         />
       );
