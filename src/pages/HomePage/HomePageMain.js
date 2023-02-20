@@ -14,6 +14,7 @@ import keys from "../../secrets/keys";
 import apiConfig from "../../config/apiConfig";
 import { categoryLangMapping } from "../../config/mappings";
 import CategoryProductCardList from "./components/CategoryProductCardList";
+import commonStyle from "../../commonStyle";
 
 const { AIRTABLE_API_KEY = "" } = keys || {};
 const {
@@ -78,9 +79,11 @@ const CategoryProductSection = ({ category = "" } = {}) => {
 };
 
 const HomePageMain = () => {
+  const { pageMainBgColor = "#F5F5F5" } = commonStyle || {};
+
   return (
     <main>
-      <VStack py="12" spacing="10">
+      <VStack py="12" spacing="10" bgColor={pageMainBgColor}>
         <CategoryProductSection category={"MALE_CLOTHES"} />
         {/* <CategoryProductSection category={"FEMALE_CLOTHES"} /> */}
       </VStack>

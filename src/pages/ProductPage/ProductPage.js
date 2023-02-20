@@ -1,11 +1,17 @@
-import { useParams } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
+
+import PageHeader from "../../components/PageHeader";
+import PageFooter from "../../components/PageFooter";
+import ProductPageMain from "./ProductPageMain";
 
 const ProductPage = () => {
-  const { productId = "" } = useParams();
-  console.log("productId: ", productId);
-  console.log(" ");
-
-  return <div>ProductPage</div>;
+  return (
+    <Box>
+      <PageHeader />
+      <ProductPageMain />
+      <PageFooter />
+    </Box>
+  );
 };
 
 export default ProductPage;
