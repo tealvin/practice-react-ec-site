@@ -2,7 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
-import CategoryPage from "./pages/CategoryPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -11,8 +11,8 @@ function App() {
       element: <HomePage />,
     },
     {
-      path: "/category",
-      element: <CategoryPage />,
+      path: "/products/:productId",
+      element: <ProductPage />,
     },
   ]);
 

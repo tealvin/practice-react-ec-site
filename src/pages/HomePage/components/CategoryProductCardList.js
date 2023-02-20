@@ -9,6 +9,7 @@ import {
   Text,
   Divider,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 
 import homePageCommonStyle from "../homePageCommonStyle";
@@ -18,6 +19,7 @@ const ProductCard = ({
   inStock = 0,
   priceRange = "",
   imgUrl = "",
+  productId = "",
 } = {}) => {
   if (!name || !inStock || !priceRange || !imgUrl) return;
 
@@ -40,23 +42,25 @@ const ProductCard = ({
   );
 
   return (
-    <Card>
-      <CardBody>
-        <Image
-          w={cardContentSize}
-          h={cardContentSize}
-          src={imgUrl}
-          alt={name}
-        />
-      </CardBody>
-      <Divider spacing="4"></Divider>
-      <CardFooter>
-        <VStack>
-          {CardFooterHeading}
-          {CardFooterBlock}
-        </VStack>
-      </CardFooter>
-    </Card>
+    <Link href={`/products/${productId}`}>
+      <Card>
+        <CardBody>
+          <Image
+            w={cardContentSize}
+            h={cardContentSize}
+            src={imgUrl}
+            alt={name}
+          />
+        </CardBody>
+        <Divider spacing="4"></Divider>
+        <CardFooter>
+          <VStack>
+            {CardFooterHeading}
+            {CardFooterBlock}
+          </VStack>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 };
 
@@ -70,13 +74,14 @@ const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
           in_stock: inStock = 0,
           name = "",
           img_url: imgUrl = "",
+          male_clothes_id: productId = "",
         } = {},
-        id: dataProductId = "",
       } = dataProduct;
 
       return (
         <ProductCard
-          key={dataProductId}
+          key={productId}
+          productId={productId}
           name={name}
           inStock={inStock}
           priceRange={priceRange}
