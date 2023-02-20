@@ -1,14 +1,14 @@
 import { Flex, HStack, Text, Link } from "@chakra-ui/react";
 
-import homePageCommonStyle from "./homePageCommonStyle";
-import HomePageLogo from "./components/HomePageLogo";
+import commonStyle from "../../commonStyle";
+import HomePageLogo from "../../pages/HomePage/components/HomePageLogo";
 
-const homePageFooterTextColor = "#FFF";
+const footerTextColor = "#FFF";
 
 const FooterLogoBox = () => (
   <HStack spacing={5}>
     <HomePageLogo size={1.2} link={false} />
-    <Text as="b" color={homePageFooterTextColor}>
+    <Text as="b" color={footerTextColor}>
       © 2023 皮皮購物
     </Text>
   </HStack>
@@ -48,7 +48,7 @@ const FooterLinkList = () => {
 
       const separateSign =
         index !== linkData.length - 1 ? (
-          <Text color={homePageFooterTextColor}> • </Text>
+          <Text color={footerTextColor}> • </Text>
         ) : (
           ""
         );
@@ -56,7 +56,7 @@ const FooterLinkList = () => {
       return (
         <HStack key={content}>
           <Link isExternal href={href}>
-            <Text color={homePageFooterTextColor}>{content}</Text>
+            <Text color={footerTextColor}>{content}</Text>
           </Link>
           {separateSign}
         </HStack>
@@ -67,14 +67,14 @@ const FooterLinkList = () => {
   return <HStack>{linkList}</HStack>;
 };
 
-const HomePageFooter = () => {
-  const { homePagePx = "" } = homePageCommonStyle || {};
+const PageFooter = () => {
+  const { pagePx = "", firmMainColor = "#E74E36" } = commonStyle || {};
 
   return (
     <footer>
       <Flex
-        bg="#E74E36"
-        px={homePagePx}
+        bg={firmMainColor}
+        px={pagePx}
         justifyContent="space-between"
         alignItems="center"
         h="100px"
@@ -86,4 +86,4 @@ const HomePageFooter = () => {
   );
 };
 
-export default HomePageFooter;
+export default PageFooter;

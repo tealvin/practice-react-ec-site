@@ -80,7 +80,7 @@ const CategoryProductSection = ({ category = "" } = {}) => {
 const HomePageMain = () => {
   return (
     <main>
-      <VStack py="10" spacing="10">
+      <VStack py="12" spacing="10">
         <CategoryProductSection category={"MALE_CLOTHES"} />
         {/* <CategoryProductSection category={"FEMALE_CLOTHES"} /> */}
       </VStack>

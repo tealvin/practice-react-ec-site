@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 
-import homePageCommonStyle from "../homePageCommonStyle";
+import commonStyle from "../../../commonStyle";
 
 const ProductCard = ({
   name = "",
@@ -23,7 +23,8 @@ const ProductCard = ({
 } = {}) => {
   if (!name || !inStock || !priceRange || !imgUrl) return;
 
-  const { firmMainColor = "#E74E36" } = homePageCommonStyle || {};
+  const { firmMainColor = "#E74E36" } = commonStyle || {};
+
   const titleCharLimit = 15;
   const truncatedTitle = name && name.slice(0, titleCharLimit) + "..";
 

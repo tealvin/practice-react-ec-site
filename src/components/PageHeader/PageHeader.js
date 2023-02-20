@@ -1,6 +1,6 @@
 import { Flex, Link, HStack } from "@chakra-ui/react";
-import homePageCommonStyle from "./homePageCommonStyle";
-import HomePageLogo from "./components/HomePageLogo";
+import commonStyle from "../../commonStyle";
+import HomePageLogo from "../../pages/HomePage/components/HomePageLogo";
 
 const IconLink = ({
   backgroundSize = "",
@@ -43,15 +43,14 @@ const IconLinkList = () => {
   );
 };
 
-const HomePageHeader = () => {
-  const { homePagePx = "", firmMainColor = "#E74E36" } =
-    homePageCommonStyle || {};
+const PageHeader = () => {
+  const { pagePx = "", firmMainColor = "#E74E36" } = commonStyle || {};
 
   return (
     <header>
       <Flex
         bg={firmMainColor}
-        px={homePagePx}
+        px={pagePx}
         justifyContent="space-between"
         alignItems="center"
         h="60px"
@@ -63,4 +62,4 @@ const HomePageHeader = () => {
   );
 };
 
-export default HomePageHeader;
+export default PageHeader;
