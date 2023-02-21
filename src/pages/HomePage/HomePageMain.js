@@ -13,7 +13,7 @@ import axios from "axios";
 import keys from "../../secrets/keys";
 import apiConfig from "../../config/apiConfig";
 import { productCategoryAndLangMapping } from "../../config/mappings";
-import CategoryProductCardList from "./components/CategoryProductCardList";
+import ProductCategoryCardList from "./components/ProductCategoryCardList";
 import commonStyle from "../../commonStyle";
 
 const { AIRTABLE_API_KEY = "" } = keys || {};
@@ -63,7 +63,7 @@ const ProductCategorySection = ({ productCategory = "" } = {}) => {
 
   const productCategoryLang =
     productCategoryAndLangMapping[productCategory] || " ";
-  const productCategoryLangSection = productCategoryLang && (
+  const productCategoryLangText = productCategoryLang && (
     <Text>{productCategoryLang}</Text>
   );
 
@@ -73,12 +73,16 @@ const ProductCategorySection = ({ productCategory = "" } = {}) => {
     <Card>
       <CardHeader>
         <Flex justifyContent="space-between">
-          {productCategoryLangSection}
+          {productCategoryLangText}
           {isMoreSection}
         </Flex>
       </CardHeader>
       <CardBody>
-        <CategoryProductCardList dataProducts={dataProducts} limit={4} />
+        <ProductCategoryCardList
+          productCategory={productCategory}
+          dataProducts={dataProducts}
+          limit={4}
+        />
       </CardBody>
     </Card>
   );

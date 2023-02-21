@@ -15,11 +15,12 @@ import {
 import commonStyle from "../../../commonStyle";
 
 const ProductCard = ({
+  productCategory = "",
+  productId = "",
   name = "",
   inStock = 0,
   priceRange = "",
   imgUrl = "",
-  productId = "",
 } = {}) => {
   if (!name || !inStock || !priceRange || !imgUrl) return;
 
@@ -43,7 +44,7 @@ const ProductCard = ({
   );
 
   return (
-    <Link href={`/products/${productId}`}>
+    <Link href={`/${productCategory}/${productId}`}>
       <Card>
         <CardBody>
           <Image
@@ -65,7 +66,11 @@ const ProductCard = ({
   );
 };
 
-const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
+const ProductCategoryCardList = ({
+  productCategory = "",
+  dataProducts = [],
+  limit = -1,
+}) => {
   const ProductCardList =
     dataProducts.length &&
     dataProducts.slice(0, limit).map((dataProduct = {}) => {
@@ -82,6 +87,7 @@ const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
       return (
         <ProductCard
           key={productId}
+          productCategory={productCategory}
           productId={productId}
           name={name}
           inStock={inStock}
@@ -94,4 +100,4 @@ const CategoryProductCardList = ({ dataProducts = [], limit = -1 }) => {
   return <HStack spacing={10}>{ProductCardList}</HStack>;
 };
 
-export default CategoryProductCardList;
+export default ProductCategoryCardList;

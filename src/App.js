@@ -11,7 +11,7 @@ function App() {
       element: <HomePage />,
     },
     {
-      path: "/products/:productId",
+      path: "/:productCategory/:productId",
       element: <ProductPage />,
     },
   ]);
