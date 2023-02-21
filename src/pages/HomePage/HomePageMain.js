@@ -12,7 +12,7 @@ import axios from "axios";
 
 import keys from "../../secrets/keys";
 import apiConfig from "../../config/apiConfig";
-import { categoryAndLangMapping } from "../../config/mappings";
+import { productCategoryAndLangMapping } from "../../config/mappings";
 import CategoryProductCardList from "./components/CategoryProductCardList";
 import commonStyle from "../../commonStyle";
 
@@ -21,18 +21,18 @@ const {
   airtable: { API_DOMAIN = "", APP_ID = "", productCategories = {} } = {},
 } = apiConfig || {};
 
-const CategoryProductSection = ({ category = "" } = {}) => {
+const ProductCategorySection = ({ productCategory = "" } = {}) => {
   const [isMore, setIsMore] = useState(false);
   const [dataProducts, setDataProducts] = useState([]);
   useEffect(() => {
-    const CATEGORY_TABLE_ID =
-      (productCategories[category] &&
-        productCategories[category]["categoryTableId"]) ||
+    const PRODUCT_CATEGORY_TABLE_ID =
+      (productCategories[productCategory] &&
+        productCategories[productCategory]["productCategoryTableId"]) ||
       "";
-    const API_URL = `${API_DOMAIN}/${APP_ID}/${CATEGORY_TABLE_ID}`;
+    const API_URL = `${API_DOMAIN}/${APP_ID}/${PRODUCT_CATEGORY_TABLE_ID}`;
     const API_AUTHORIZATION = `Bearer ${AIRTABLE_API_KEY}`;
 
-    if (!CATEGORY_TABLE_ID) return;
+    if (!PRODUCT_CATEGORY_TABLE_ID) return;
 
     axios
       .get(API_URL, {
@@ -61,8 +61,11 @@ const CategoryProductSection = ({ category = "" } = {}) => {
     </Link>
   );
 
-  const categoryLang = categoryAndLangMapping[category] || " ";
-  const categoryLangSection = categoryLang && <Text>{categoryLang}</Text>;
+  const productCategoryLang =
+    productCategoryAndLangMapping[productCategory] || " ";
+  const productCategoryLangSection = productCategoryLang && (
+    <Text>{productCategoryLang}</Text>
+  );
 
   if (!dataProducts.length) return;
 
@@ -70,7 +73,7 @@ const CategoryProductSection = ({ category = "" } = {}) => {
     <Card>
       <CardHeader>
         <Flex justifyContent="space-between">
-          {categoryLangSection}
+          {productCategoryLangSection}
           {isMoreSection}
         </Flex>
       </CardHeader>
@@ -87,8 +90,8 @@ const HomePageMain = () => {
   return (
     <main>
       <VStack py="12" spacing="10" bgColor={pageMainBgColor}>
-        <CategoryProductSection category={"male-clothes"} />
-        {/* <CategoryProductSection category={"female-clothes"} /> */}
+        <ProductCategorySection productCategory={"male-clothes"} />
+        {/* <ProductCategorySection productCategory={"female-clothes"} /> */}
       </VStack>
     </main>
   );
