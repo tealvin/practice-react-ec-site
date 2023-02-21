@@ -12,7 +12,7 @@ import axios from "axios";
 
 import keys from "../../secrets/keys";
 import apiConfig from "../../config/apiConfig";
-import { categoryLangMapping } from "../../config/mappings";
+import { categoryAndLangMapping } from "../../config/mappings";
 import CategoryProductCardList from "./components/CategoryProductCardList";
 import commonStyle from "../../commonStyle";
 
@@ -25,7 +25,10 @@ const CategoryProductSection = ({ category = "" } = {}) => {
   const [isMore, setIsMore] = useState(false);
   const [dataProducts, setDataProducts] = useState([]);
   useEffect(() => {
-    const CATEGORY_TABLE_ID = productCategories[category] || "";
+    const CATEGORY_TABLE_ID =
+      (productCategories[category] &&
+        productCategories[category]["categoryTableId"]) ||
+      "";
     const API_URL = `${API_DOMAIN}/${APP_ID}/${CATEGORY_TABLE_ID}`;
     const API_AUTHORIZATION = `Bearer ${AIRTABLE_API_KEY}`;
 
@@ -58,7 +61,7 @@ const CategoryProductSection = ({ category = "" } = {}) => {
     </Link>
   );
 
-  const categoryLang = categoryLangMapping[category] || " ";
+  const categoryLang = categoryAndLangMapping[category] || " ";
   const categoryLangSection = categoryLang && <Text>{categoryLang}</Text>;
 
   if (!dataProducts.length) return;
@@ -84,8 +87,8 @@ const HomePageMain = () => {
   return (
     <main>
       <VStack py="12" spacing="10" bgColor={pageMainBgColor}>
-        <CategoryProductSection category={"MALE_CLOTHES"} />
-        {/* <CategoryProductSection category={"FEMALE_CLOTHES"} /> */}
+        <CategoryProductSection category={"male-clothes"} />
+        {/* <CategoryProductSection category={"female-clothes"} /> */}
       </VStack>
     </main>
   );
