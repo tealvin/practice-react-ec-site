@@ -1,10 +1,11 @@
-import { VStack, Heading, Box, Text } from "@chakra-ui/react";
+import { VStack, HStack, Heading, Box, Text } from "@chakra-ui/react";
 
 import commonStyle from "../../../commonStyle";
 
 import RadioCardSet from "./RadioCardSet";
 import ProductCounterSet from "./ProductCounterSet";
-import AddToCartButton from "./AddToCartButton";
+import ButtonAddToCart from "./ButtonAddToCart";
+import ButtonBackOnePage from "./ButtonBackOnePage";
 
 const ProductForm = () => {
   const { firmMainColor = "#E74E36" } = commonStyle || {};
@@ -27,7 +28,10 @@ const ProductForm = () => {
       <RadioCardSet options={options} setName="framework1" setTitle="框架1" />
       <RadioCardSet options={options} setName="framework2" setTitle="框架2" />
       <ProductCounterSet />
-      <AddToCartButton />
+      <HStack>
+        <ButtonAddToCart />
+        <ButtonBackOnePage />
+      </HStack>
     </VStack>
   );
 };
