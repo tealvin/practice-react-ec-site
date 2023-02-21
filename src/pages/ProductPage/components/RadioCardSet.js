@@ -58,7 +58,7 @@ const RadioCardSet = ({
 
   return (
     <HStack {...group}>
-      <Text>{setTitle}:</Text>
+      <Text w="100px">{setTitle}</Text>
       {radioCards}
     </HStack>
   );
